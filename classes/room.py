@@ -7,6 +7,8 @@ class Room:
         self.song_list = []
 
     def check_in(self, person):
+        if len(self.inside) == 3:
+            return
         self.inside.append(person)
 
     def check_out(self, person):
@@ -14,5 +16,5 @@ class Room:
 
     def add_song(self, song):
         self.song_list.append(song)
-        
-   
+
+ 
