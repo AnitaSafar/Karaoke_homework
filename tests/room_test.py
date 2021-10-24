@@ -7,10 +7,10 @@ class TestRoom(unittest.TestCase):
     
     def setUp(self):
         self.room = Room("70s", 3)
-        self.guest_1 = Guest("Anna", 34, 50)
-        self.guest_2 = Guest("Lily", 32, 60)
-        self.guest_3 = Guest("Hannah", 35, 80)
-        self.guest_4 = Guest("Liam", 36, 100)
+        self.guest_1 = Guest("Anna", 34, 50, "Don't stop me now")
+        self.guest_2 = Guest("Lily", 32, 60, "9 to 5")
+        self.guest_3 = Guest("Hannah", 35, 80, "Dream on")
+        self.guest_4 = Guest("Liam", 36, 100, "Yellow")
         self.song = Song("Don't stop me now", "Queen")
 
     def test_room_has_name(self):
@@ -48,6 +48,7 @@ class TestRoom(unittest.TestCase):
         self.room.check_in(self.guest_3)
         self.assertEqual(3, len(self.room.inside))
 
+
     def test_full_house(self):
         self.room.check_in(self.guest_1)
         self.room.check_in(self.guest_2)
@@ -56,6 +57,9 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(3, len(self.room.inside))
 
 
+    def test_room_has_fav_song(self):
+        self.room.fav_song(self.guest_1)
+        self.assertEqual("Don't stop me now", self.song.name)
 
 
 
